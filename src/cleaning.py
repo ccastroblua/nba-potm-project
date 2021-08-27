@@ -5,25 +5,56 @@ import datetime
 # Getting each game date with format:
 
 def date(string):
+    """Transforming an specific string into a date with format DD/MM/YYYY.
+
+    Args:
+        string (string): string containing raw date.
+
+    Returns:
+        string: Date with format DD/MM/YYYY.
+    """    
     return string[17:19]+"/"+string[15:17]+"/"+string[11:15]
 
 
 # Getting each game month in an integer:
 
 def get_month(string):
+    """Transforming an specific string from the dataset into a month integer.
+
+    Args:
+        string (string): String containing raw month.
+
+    Returns:
+        int: Month in an integer format (MM).
+    """    
     return int(string[15:17])
 
 
 # Getting each game year in an integer:
 
 def get_year(string):
+    """Transforming an specific string from the dataset into a year integer.
+
+    Args:
+        string (string): String containing raw year.
+
+    Returns:
+        int: Year in an integer format (YYYY).
+    """    
     return int(string[11:15])
 
 
 # Using datetime library to convert full name month to 
 
 def convert_month(string):
+    """Transforming an specific string from the web scrapping into a month integer.
 
+    Args:
+        string (string): String containing raw year.
+
+    Returns:
+        int: Month in an integer format (MM).
+    """    
     datetime_object = datetime.datetime.strptime(string, "%B")
 
     month_number = datetime_object.month
@@ -34,6 +65,14 @@ def convert_month(string):
 # Seasons starts after september and ends before august:
 
 def convert_season(row):
+    """Transforming an specific row from the web scrapping data into it's season number.
+
+    Args:
+        row (string): String containing raw season.
+
+    Returns:
+        int: Season in an integer year format (YYYY).
+    """    
     if row["month"] >= 8:
         return int(row["season"][:4])
     else:

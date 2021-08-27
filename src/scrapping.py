@@ -10,6 +10,14 @@ import json
 # Let's make a function to clean each row of information get from the html file:
 
 def clear_row(pom):
+    """Get a player of the month table row, extracts and transform 6 importants value (season, player, conference, month, team and position).
+
+    Args:
+        pom (string): Player of the month row.
+
+    Returns:
+        dictionary: It creates a dictionary with 6 key, value pairs (season, player, conference, month, team and position).
+    """    
     
     dic_poms = dict()
 
@@ -26,6 +34,13 @@ def clear_row(pom):
 # We insert the soup content into this function to get the final "player of the month" dataset:
 
 def html_cleaning(soup):
+    """Gets a Beautiful Soup variable and extracts relevant information from this table.
+
+    Args:
+        soup (string): Beautiful Soup string transformed from a table in an html webpage.
+    Returns:
+        list: List of dictionaries with each player of the month relevant values (season, player, conference, month, team and position).
+    """    
     poms_table = soup.find("tbody")
     pom_list = poms_table.find_all("tr")
     
